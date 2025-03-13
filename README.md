@@ -1,5 +1,14 @@
 # Doc
 
+How to Start the System
+
+To start the system, use Docker Compose to build and run the microservices. Follow these steps:
+
+    #Clone the repository
+    #docker-compose up --build
+
+This command will build the Docker images for the microservices and start them up. Once the services are up and running, you can interact with them via their exposed REST APIs.
+
 System Overview
 
 The system is composed of five microservices, each with a specific role to play in handling client requests, processing data, and storing information. These services are:
