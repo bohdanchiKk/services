@@ -1,0 +1,17 @@
+# Use the official ActiveMQ image as the base
+FROM rmohr/activemq:latest
+ENV ARTEMIS_USER artemis
+ENV ARTEMIS_PASSWORD artemis
+ENV ANONYMOUS_LOGIN false
+# Copy custom configuration files (if any)
+COPY conf/ /opt/activemq/conf/
+
+# Copy custom plugins or dependencies (if any)
+COPY plugins/ /opt/activemq/plugins/
+
+## Expose ports
+#EXPOSE 61616  # OpenWire port
+#EXPOSE 8161   # Web console port
+
+# Start ActiveMQ
+CMD ["/opt/activemq/bin/activemq", "console"]
