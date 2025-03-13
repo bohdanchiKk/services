@@ -3,9 +3,9 @@
 System Overview
 
 The system consists of 5 microservices:
-    ServiceS1: Accepts client requests, verifies authentication, and sends data to a queue using JMS (Java Message Service).
-
-    ListenerService5: Receives messages from the queue, processes them, and stores the data in a database.
+ServiceS1: Accepts client requests, verifies authentication, and sends data to a queue using JMS.
+Service2-5 retrives the mock data to each other.
+ListenerService5: Receives messages from the queue, processes them, and stores the data in a database.
 
 The system leverages JMS for asynchronous message exchange between microservices, enabling loose coupling, flexibility, and scalability.
 ServiceS1 Documentation
