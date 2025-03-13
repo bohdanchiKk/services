@@ -1,1 +1,47 @@
 # Doc
+
+System Overview
+
+The system consists of 5 microservices:
+    ServiceS1: Accepts client requests, verifies authentication, and sends data to a queue using JMS (Java Message Service).
+
+    ListenerService5: Receives messages from the queue, processes them, and stores the data in a database.
+
+The system leverages JMS for asynchronous message exchange between microservices, enabling loose coupling, flexibility, and scalability.
+ServiceS1 Documentation
+Description
+
+The ServiceS1 microservice provides a REST API to accept client requests. It verifies authentication using the sid header and sends the received clientId data to the clientId.queue via JMS.
+API
+    Method: POST
+    URL: /service1/call
+    Headers:
+        sid: Authentication token (must be valid_sid).
+    Request Body:
+    {
+      "clientId": "123"
+    }
+    Response:
+        On success: "Client id has been sent."
+        On authentication error: "Unauthorized"
+
+Improvements
+    Logging:
+        Add logging for incoming requests and their processing results. This will help track issues and analyze system performance.
+    JMS Error Handling:
+        Add exception handling for message sending to the queue. For example, if the broker is unavailable, retry sending or return an error to the client.
+        
+ListenerService5 Documentation
+Description
+The ListenerService5 microservice receives messages from the clinetContacts.queue, processes them, and stores the data in the database. It uses JMS for asynchronous message consumption.
+Improvements
+    Logging:
+        Add logging for received messages and their processing results.
+    Database Error Handling:
+        Add exception handling for database operations. For example, if the database is unavailable, retry the operation or store the message in a queue for reprocessing.
+  
+Unit Tests
+ServiceS1Controller
+ListenerService5
+
+      
